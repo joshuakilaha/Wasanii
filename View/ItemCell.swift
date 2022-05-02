@@ -1,40 +1,44 @@
-////
-////  ItemCell.swift
-////  Wasanii
-////
-////  Created by mroot on 02/05/2022.
-////
 //
-//import SwiftUI
+//  ItemCell.swift
+//  Wasanii
 //
-//struct ItemCell: View {
+//  Created by mroot on 02/05/2022.
 //
-//    let name: String
-//    let status: Status
-//    let images: String
-//
-//    var body: some View {
-//
-//        HStack {
-//            AsyncImage(url: URL(string: images)) { image in
-//                image.resizable()
-//            } placeholder: {
-//                ProgressView()
-//            } .frame(width: 90, height: 90)
-//
-//            VStack(alignment: .leading) {
-//                Text(name)
-//                    .font(.title)
-//                Text(status.rawValue)
-//                        .font(.subheadline)
-//                        .foregroundColor(statusColor(status: status))
-//            }
-//        }
-//    }
-//}
-//
-//struct ItemCell_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ItemCell()
-//    }
-//}
+
+import SwiftUI
+
+struct ItemCell: View {
+
+    let title: String
+    let thumnail: String
+
+    var body: some View {
+
+        VStack(alignment: .center) {
+        AsyncImage(url: URL(string: thumnail)) { phase in
+                if let image = phase.image {
+                    // Displays the loaded image.
+                    image.resizable().frame(height: 250)
+                } else if phase.error != nil {
+                    Color.red // Indicates an error.
+                } else {
+                    // Acts as a placeholder.
+                    Image("defaultImage")
+                        .resizable()
+                        .frame(height: 250)
+                }
+            }
+
+            VStack(alignment: .leading) {
+                Text(title)
+                    //.font(.title)
+            }
+        }
+    }
+}
+
+struct ItemCell_Previews: PreviewProvider {
+    static var previews: some View {
+        ItemCell(title: "Event", thumnail: "image")
+    }
+}

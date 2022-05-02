@@ -23,11 +23,12 @@ struct ContentView: View {
                 VStack {
                     List {
                         ForEach(data, id:\.itemDescription) { item in
-                           // CharacterViewCell(name: item.name, status: item.status, images: item.image)
-                            Text(item.title)
+                            ItemCell(title: item.title, thumnail: item.thumbnail)
+                                .padding()
                         }
                     }
                 } .navigationTitle("Events")
+                    .listStyle(GroupedListStyle())
                 
             case .notAvailable:
                 EmptyView()
@@ -39,7 +40,8 @@ struct ContentView: View {
                 Text(error.localizedDescription)
             }
             
-        } .task {
+        } .navigationViewStyle(.stack)
+        .task {
            await itemViewModel.getItems()
         }
     }

@@ -7,35 +7,8 @@
 
 import Foundation
 
-//struct Wasanii: Codable {
-//    let items: [Item]
-//}
 
-//struct Item: Codable {
-//   // let id: String
-//    let title: String
-//    let pubDate: String
-//    let link: String
-//    let guid: String
-//    let author: String
-//    let thumbnail: String
-//    let itemDescription: String
-//    let content: String
-//    let enclosure: Enclosure
-//    let categories: [String]
-//}
-//
-//enum CodingKeys: String, CodingKey {
-//    case title, pubDate, link, guid, author, thumbnail
-//    case itemDescription = "description"
-//    case content, enclosure, categories
-//}
-//
-//struct Enclosure: Codable {
-//    let link: String
-//}
-
-// MARK: - Welcome
+// MARK: - Wasanii
 struct Wasanii: Codable {
     let status: String
     let feed: Feed
