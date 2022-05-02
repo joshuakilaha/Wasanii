@@ -39,10 +39,10 @@ class ItemViewModel: ObservableObject {
         self.hasError = false
         
         do {
-            let items = try await service.getRequests() //wait for response from fetchCharacters to continue
-            self.state = .success(data: items) //on success response get decoded info and place in characters
+            let items = try await service.getRequests() //wait for response from fetchItems to continue
+            self.state = .success(data: items) //on success response get decoded info and place in items
         } catch {
-            //if the service.fetchCharacter func throws and error or fails to execute
+            //if the service.fetchItems func throws and error or fails to execute
             self.state = .failed(error: error)
             hasError = true
             debugPrint(error)
