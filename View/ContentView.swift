@@ -14,35 +14,66 @@ struct ContentView: View {
     
     var body: some View {
         
-        NavigationView {
-            
-            switch itemViewModel.state {
+        TabView {
+            //MARK: -Home Page
+            NavigationView {
                 
-            case .success(let data) :
-                
-                VStack {
-                    List {
-                        ForEach(data, id:\.itemDescription) { item in
-                            ItemCell(title: item.title, thumnail: item.thumbnail)
-                                .padding()
+                switch itemViewModel.state {
+                    
+                case .success(let data) :
+                    
+                    VStack {
+                        List {
+                            ForEach(data, id:\.itemDescription) { item in
+                                ItemCell(title: item.title, thumnail: item.thumbnail)
+                                    .padding()
+                            }
                         }
-                    }
-                } .navigationTitle("Events")
-                    .listStyle(GroupedListStyle())
+                    } .navigationTitle("Events")
+                        .listStyle(GroupedListStyle())
+                    
+                case .notAvailable:
+                    EmptyView()
+                    
+                case .loading:
+                    ProgressView()
+                    
+                case .failed(error: let error):
+                    Text(error.localizedDescription)
+                }
                 
-            case .notAvailable:
-                EmptyView()
-                
-            case .loading:
-                ProgressView()
-                
-            case .failed(error: let error):
-                Text(error.localizedDescription)
+            } .navigationViewStyle(.stack)
+            .task {
+               await itemViewModel.getItems()
             }
+           .tabItem {
+               Image(systemName: "house.fill")
+               Text("Home")
+           }
             
-        } .navigationViewStyle(.stack)
-        .task {
-           await itemViewModel.getItems()
+            //MARK: -Search
+            
+            Text("Search")
+            
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                }
+            
+            //MARK: -Alert
+            Text("Alert")
+            
+                .tabItem {
+                    Image(systemName: "bell")
+                }
+            
+            //MARK: Profile
+            
+            Text("Profile")
+            
+                .tabItem {
+                    Image(systemName: "person")
+                }
+            
         }
     }
 }
