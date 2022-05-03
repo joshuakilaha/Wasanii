@@ -29,7 +29,9 @@ struct SearchView: View {
                         }
                 }
             }
+                    .navigationTitle("Search Event")
         }
+        .navigationViewStyle(.stack)
     }
 }
 
