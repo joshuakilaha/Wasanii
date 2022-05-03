@@ -20,7 +20,7 @@ struct ItemCell: View {
         AsyncImage(url: URL(string: thumnail)) { phase in
                 if let image = phase.image {
                     // Displays the loaded image.
-                    image.resizable().frame(width: 130, height: 150)
+                    image.resizable().frame(width: 150, height: 150)
                         .cornerRadius(20)
                         
 //                } else if phase.error != nil {

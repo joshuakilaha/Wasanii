@@ -49,18 +49,4 @@ class ItemViewModel: ObservableObject {
             debugPrint(error)
         }
     }
-    
-    //MARK: Search Item
-    
-    func search(title: String) async {
-        do {
-            let items = try await service.getItem(searchedItem: title)
-            //self.state = .success(data: items)
-            //self.state = .success(data: items.map(Item.init))
-           // self.items = items.map(Item.init)
-            
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
 }
