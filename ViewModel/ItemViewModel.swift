@@ -25,6 +25,7 @@ class ItemViewModel: ObservableObject {
      */
     @Published private(set) var state: State = .notAvailable //private
     @Published var hasError: Bool = false
+    @Published var items: [Item] = []
     
     
     private let service: ItemService

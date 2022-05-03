@@ -11,8 +11,8 @@ struct ItemCell: View {
 
     let title: String
     let thumnail: String
+    let date: String
     
-
 
     var body: some View {
 
@@ -20,7 +20,7 @@ struct ItemCell: View {
         AsyncImage(url: URL(string: thumnail)) { phase in
                 if let image = phase.image {
                     // Displays the loaded image.
-                    image.resizable().frame(width: 130, height: 150)
+                    image.resizable().frame(width: 150, height: 150)
                         .cornerRadius(20)
                         
 //                } else if phase.error != nil {
@@ -29,7 +29,7 @@ struct ItemCell: View {
                     // Acts as a placeholder.
                     Image("defaultImage")
                         .resizable()
-                        .frame(width: 130, height: 150)
+                        .frame(width: 150, height: 150)
                         .cornerRadius(20)
                 }
             }
@@ -46,14 +46,12 @@ struct ItemCell: View {
                     .font(.title3)
                     .foregroundColor(.gray)
                 
-               // Spacer(minLength: 20)
                 
-                Text("20th June 2022")
+                
+                Text( Date().formatStringDate(date: date))
                     .italic()
                     .foregroundColor(.gray)
             }
-            
-//            Spacer()
             
             VStack(alignment: .trailing) {
                 Image(systemName: "heart")
@@ -62,11 +60,11 @@ struct ItemCell: View {
             }
         }
     }
-    
 }
 
 struct ItemCell_Previews: PreviewProvider {
     static var previews: some View {
-        ItemCell(title: "Event", thumnail: "image")
+        ItemCell(title: "Event", thumnail: "image", date: "")
+        
     }
 }
