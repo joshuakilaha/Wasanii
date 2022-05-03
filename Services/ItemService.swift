@@ -60,9 +60,9 @@ struct ItemService {
         components.host = "api.rss2json.com"
         components.path = "/v1/api.json"
         components.queryItems = [
-        URLQueryItem(name: "rss_url", value: "https://nairobinow.wordpress.com/search/Art/feed/rss2/"),
-        URLQueryItem(name: "s", value: searchedItem),
-        URLQueryItem(name: "searchbutton", value: "Go%21")
+        URLQueryItem(name: "rss_url", value: "https://nairobinow.wordpress.com/search/\(searchedItem)/feed/rss2/"),
+      //  URLQueryItem(name: "s", value: searchedItem),
+       // URLQueryItem(name: "searchbutton", value: "Go%21")
         ]
         
         
