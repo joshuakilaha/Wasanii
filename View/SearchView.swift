@@ -14,7 +14,8 @@ struct SearchView: View {
     var body: some View {
         NavigationView {
             List(itemList.item, id: \.title) { item in
-                Text(item.title)
+                ItemCell(title: item.title, thumnail: item.thumbnail)
+                    .padding()
             }
                 .listStyle(.plain)
                     .searchable(text: $searchText)

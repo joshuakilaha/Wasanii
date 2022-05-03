@@ -29,6 +29,7 @@ struct ItemViewModelSearch {
         item.title
     }
     
-    
-    
+    var thumbnail: String {
+        item.thumbnail
+    }
 }
