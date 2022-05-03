@@ -11,30 +11,59 @@ struct ItemCell: View {
 
     let title: String
     let thumnail: String
+    
+
 
     var body: some View {
 
-        VStack(alignment: .center) {
+        HStack {
         AsyncImage(url: URL(string: thumnail)) { phase in
                 if let image = phase.image {
                     // Displays the loaded image.
-                    image.resizable().frame(height: 250)
-                } else if phase.error != nil {
-                    Color.red // Indicates an error.
+                    image.resizable().frame(width: 180, height: 200)
+                        .cornerRadius(20)
+                        
+//                } else if phase.error != nil {
+//                    Color.red // Indicates an error.
                 } else {
                     // Acts as a placeholder.
                     Image("defaultImage")
                         .resizable()
-                        .frame(height: 250)
+                        .frame(width: 180, height: 200)
+                        .cornerRadius(20)
+                        
                 }
             }
-
             VStack(alignment: .leading) {
+                
                 Text(title)
-                    //.font(.title)
+                .bold()
+                .lineLimit(1)
+                .fixedSize(horizontal: false, vertical: true)
+                
+                //Spacer(minLength: 20)
+                
+                Text("Nairobi Cinema")
+                    .font(.title3)
+                    .foregroundColor(.gray)
+                
+               // Spacer(minLength: 20)
+                
+                Text("20th June 2022")
+                    .italic()
+                    .foregroundColor(.gray)
+            }
+            
+//            Spacer()
+            
+            VStack(alignment: .trailing) {
+                Image(systemName: "heart")
+                    .frame(width: 40, height: 40)
+                    .foregroundColor(.gray)
             }
         }
     }
+    
 }
 
 struct ItemCell_Previews: PreviewProvider {
