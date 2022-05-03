@@ -32,4 +32,8 @@ struct ItemViewModelSearch {
     var thumbnail: String {
         item.thumbnail
     }
+    
+    var pubDate: String {
+        item.pubDate
+    }
 }

@@ -14,7 +14,7 @@ struct SearchView: View {
     var body: some View {
         NavigationView {
             List(itemList.item, id: \.title) { item in
-                ItemCell(title: item.title, thumnail: item.thumbnail)
+                ItemCell(title: item.title, thumnail: item.thumbnail, date: item.pubDate)
                     .padding()
             }
                 .listStyle(.plain)
