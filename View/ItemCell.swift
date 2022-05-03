@@ -46,14 +46,10 @@ struct ItemCell: View {
                     .font(.title3)
                     .foregroundColor(.gray)
                 
-               // Spacer(minLength: 20)
-                
                 Text("20th June 2022")
                     .italic()
                     .foregroundColor(.gray)
             }
-            
-//            Spacer()
             
             VStack(alignment: .trailing) {
                 Image(systemName: "heart")
@@ -62,7 +58,6 @@ struct ItemCell: View {
             }
         }
     }
-    
 }
 
 struct ItemCell_Previews: PreviewProvider {

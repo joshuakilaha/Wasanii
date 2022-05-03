@@ -21,7 +21,7 @@ struct HomeView: View {
                 
                 VStack {
                     List {
-                        ForEach(data, id:\.itemDescription) { item in
+                        ForEach(data, id:\.guid) { item in
                             ItemCell(title: item.title, thumnail: item.thumbnail)
                                 .padding()
                         }

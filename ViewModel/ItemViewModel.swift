@@ -25,6 +25,7 @@ class ItemViewModel: ObservableObject {
      */
     @Published private(set) var state: State = .notAvailable //private
     @Published var hasError: Bool = false
+    @Published var items: [Item] = []
     
     
     private let service: ItemService
@@ -46,6 +47,20 @@ class ItemViewModel: ObservableObject {
             self.state = .failed(error: error)
             hasError = true
             debugPrint(error)
+        }
+    }
+    
+    //MARK: Search Item
+    
+    func search(title: String) async {
+        do {
+            let items = try await service.getItem(searchedItem: title)
+            //self.state = .success(data: items)
+            //self.state = .success(data: items.map(Item.init))
+           // self.items = items.map(Item.init)
+            
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }
