@@ -60,7 +60,7 @@ struct ItemService {
         components.host = "api.rss2json.com"
         components.path = "/v1/api.json"
         components.queryItems = [
-        URLQueryItem(name: "rss_url", value: "https://nairobinow.wordpress.com/feed/"),
+        URLQueryItem(name: "rss_url", value: "https://nairobinow.wordpress.com/search/Art/feed/rss2/"),
         URLQueryItem(name: "s", value: searchedItem),
         URLQueryItem(name: "searchbutton", value: "Go%21")
         ]
@@ -71,6 +71,7 @@ struct ItemService {
             //print(Error)
         }
         
+        print(url)
         //get
         let (data, response) = try await URLSession.shared.data(from: url)
         

@@ -13,21 +13,20 @@ struct SearchView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(itemList.item, id: \.title) { item in
-                    Text(item.title)
-                }.listStyle(.plain)
+            List(itemList.item, id: \.title) { item in
+                Text(item.title)
+            }
+                .listStyle(.plain)
                     .searchable(text: $searchText)
                     .onChange(of: searchText) { newValue in
-                        Task {
-                            if !newValue.isEmpty && newValue.count > 3 {
-                                await itemList.searchItem(title: newValue)
+                    Task {
+                        if !newValue.isEmpty && newValue.count > 3 {
+                            await itemList.searchItem(title: newValue)
                                 
-                            } else {
-                                itemList.item.removeAll()
-                            }
+                        } else {
+                            itemList.item.removeAll()
                         }
-                    }
+                }
             }
         }
     }
