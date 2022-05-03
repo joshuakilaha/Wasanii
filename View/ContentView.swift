@@ -9,40 +9,35 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @StateObject var itemViewModel = ItemViewModel(service: ItemService())
     
     
     var body: some View {
         
-        NavigationView {
+        TabView {
+            //MARK: -Home Page        
+            HomeView()
+               .tabItem {
+                   Image(systemName: "house.fill")
+                   Text("Home")
+               }
             
-            switch itemViewModel.state {
-                
-            case .success(let data) :
-                
-                VStack {
-                    List {
-                        ForEach(data, id:\.itemDescription) { item in
-                            ItemCell(title: item.title, thumnail: item.thumbnail)
-                                .padding()
-                        }
-                    }
-                } .navigationTitle("Events")
-                    .listStyle(GroupedListStyle())
-                
-            case .notAvailable:
-                EmptyView()
-                
-            case .loading:
-                ProgressView()
-                
-            case .failed(error: let error):
-                Text(error.localizedDescription)
-            }
+            //MARK: -Search
+            SearchView()
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                }
             
-        } .navigationViewStyle(.stack)
-        .task {
-           await itemViewModel.getItems()
+            //MARK: -Alert
+            AlertView()
+                .tabItem {
+                    Image(systemName: "bell")
+                }
+            
+            //MARK: -Profile
+            ProfileView()
+                .tabItem {
+                    Image(systemName: "person")
+                }
         }
     }
 }

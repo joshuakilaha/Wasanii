@@ -20,7 +20,7 @@ struct ItemCell: View {
         AsyncImage(url: URL(string: thumnail)) { phase in
                 if let image = phase.image {
                     // Displays the loaded image.
-                    image.resizable().frame(width: 180, height: 200)
+                    image.resizable().frame(width: 130, height: 150)
                         .cornerRadius(20)
                         
 //                } else if phase.error != nil {
@@ -29,9 +29,8 @@ struct ItemCell: View {
                     // Acts as a placeholder.
                     Image("defaultImage")
                         .resizable()
-                        .frame(width: 180, height: 200)
+                        .frame(width: 130, height: 150)
                         .cornerRadius(20)
-                        
                 }
             }
             VStack(alignment: .leading) {
