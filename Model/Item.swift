@@ -9,18 +9,18 @@ import Foundation
 
 // MARK: - Wasanii
 struct Wasanii: Codable {
-    let status: String
-    let feed: Feed
-    let items: [Item]
+    var status: String
+    var feed: Feed
+    var items: [Item]
 }
 
 // MARK: - Feed
 struct Feed: Codable {
-    let url: String
-    let title: String
-    let link: String
-    let author, feedDescription: String
-    let image: String
+    var url: String
+    var title: String
+    var link: String
+    var author, feedDescription: String
+    var image: String
 
     enum CodingKeys: String, CodingKey {
         case url, title, link, author
@@ -31,14 +31,14 @@ struct Feed: Codable {
 
 // MARK: - Item
 struct Item: Codable {
-    let title, pubDate: String
-    let link: String
-    let guid: String
-    let author: Author
-    let thumbnail: String
-    let itemDescription, content: String
-    let enclosure: Enclosure
-    let categories: [String]
+    var title, pubDate: String
+    var link: String
+    var guid: String
+    var author: Author
+    var thumbnail: String
+    var itemDescription, content: String
+    var enclosure: Enclosure
+    var categories: [String]
 
     enum CodingKeys: String, CodingKey {
         case title, pubDate, link, guid, author, thumbnail
@@ -54,7 +54,7 @@ enum Author: String, Codable {
 
 // MARK: - Enclosure
 struct Enclosure: Codable {
-    let link: String
+    var link: String
 }
 
 
@@ -63,7 +63,7 @@ struct Enclosure: Codable {
      {
           "title": "Book Launch: Jackie Karuti’s Debut Monograph, “Notes Movement Method”, Apr. 27 2022 @ Circle Art Gallery",
  
-          "pubDate": "2022-04-27 07:19:17",
+          "pubDate": "2022-04-27 07:19:var
  
           "link": "https://nairobinow.wordpress.com/2022/04/27/book-launch-jackie-karutis-debut-monograph-notes-movement-method-apr-27-2022-circle-art-gallery/",
  

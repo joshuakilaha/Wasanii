@@ -32,7 +32,9 @@ struct ItemCell: View {
                         .frame(width: 150, height: 150)
                         .cornerRadius(20)
                 }
-            }
+        } .padding()
+            
+            Spacer()
             VStack(alignment: .leading) {
                 
                 Text(title)
@@ -59,12 +61,13 @@ struct ItemCell: View {
                     .foregroundColor(.gray)
             }
         }
+//        .background(Color.newPrimaryColor.opacity(0.1))
     }
 }
 
 struct ItemCell_Previews: PreviewProvider {
     static var previews: some View {
-        ItemCell(title: "Event", thumnail: "image", date: "")
+        ItemCell(title: "Event", thumnail: "image", date: "2020-10-21 18:42:56")
         
     }
 }

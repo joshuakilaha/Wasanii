@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 extension  String {
     func trimmed() -> String {
         self.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -20,4 +21,8 @@ extension Date {
             dateFormatter.setLocalizedDateFormatFromTemplate("MMMM d, yyyy")
             return dateFormatter.string(from: newDate!)
     }
+}
+
+extension Color {
+    static let newPrimaryColor = Color("colorPrimary")
 }

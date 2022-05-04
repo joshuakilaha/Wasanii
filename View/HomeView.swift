@@ -14,20 +14,24 @@ struct HomeView: View {
     var body: some View {
         
         NavigationView {
-            
-            switch itemViewModel.state {
+                switch itemViewModel.state {
                 
             case .success(let data) :
-                
                 VStack {
+                    
                     List {
-                        ForEach(data, id:\.guid) { item in
-                            ItemCell(title: item.title, thumnail: item.thumbnail, date: item.pubDate)
-                                .padding()
+                        ForEach(data, id: \.guid) { item in
+                            NavigationLink(destination: ItemDescriptionView(item: item)) {
+                                ItemCell(title: item.title, thumnail: item.thumbnail, date: item.pubDate)
+                            }
+                           
                         }
                     }
-                } .navigationTitle("Events")
-                    .listStyle(GroupedListStyle())
+                    
+                }
+                
+                .navigationTitle("Events")
+                .listStyle(GroupedListStyle())
                 
             case .notAvailable:
                 EmptyView()
@@ -40,6 +44,7 @@ struct HomeView: View {
             }
             
         } .navigationViewStyle(.stack)
+            .background(Color.blue)
         .task {
            await itemViewModel.getItems()
         }

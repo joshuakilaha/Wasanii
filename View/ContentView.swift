@@ -25,20 +25,23 @@ struct ContentView: View {
             SearchView()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
+                    Text("Search")
                 }
             
             //MARK: -Alert
             AlertView()
                 .tabItem {
                     Image(systemName: "bell")
+                    Text("Alert")
                 }
             
             //MARK: -Profile
             ProfileView()
                 .tabItem {
                     Image(systemName: "person")
+                    Text("Profile")
                 }
-        }
+        } .accentColor(.newPrimaryColor)
     }
 }
 
