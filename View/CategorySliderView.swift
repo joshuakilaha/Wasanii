@@ -12,39 +12,39 @@ struct CategorySliderView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .center) {
                 Button {
-                    print("Arts")
+                    print("art-exhibits")
+                } label: {
+                    Text("All")
+                        .borderedCaption()
+                }
+                Button {
+                    print("art-exhibits")
                 } label: {
                     Text("Art")
                         .borderedCaption()
                 }
                 Button {
-                    print("Arts")
+                    print("concerts")
                 } label: {
-                    Text("Concert")
+                    Text("Concerts")
                         .borderedCaption()
                 }
                 Button {
-                    print("Arts")
+                    print("movies")
                 } label: {
-                    Text("Music")
+                    Text("Movies")
                         .borderedCaption()
                 }
                 Button {
-                    print("Arts")
+                    print("theater-performances")
                 } label: {
-                    Text("Sports")
+                    Text("Theater")
                         .borderedCaption()
                 }
                 Button {
-                    print("Arts")
+                    print("charity")
                 } label: {
-                    Text("Cars")
-                        .borderedCaption()
-                }
-                Button {
-                    print("Arts")
-                } label: {
-                    Text("News")
+                    Text("Charity")
                         .borderedCaption()
                 }
 
@@ -63,14 +63,13 @@ struct CategorySliderView_Previews: PreviewProvider {
 struct BorderedCaption: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font(.caption2)
+            .font(.system(size: 13, weight: .bold, design: .default))
             .padding(10)
             .frame(width: 80)
-            .overlay(
-                RoundedRectangle(cornerRadius: 15)
-                    .stroke(lineWidth: 1)
-            )
-            .foregroundColor(Color.blue)
+            .foregroundColor(.white)
+            .background(Color.newPrimaryColor)
+            .cornerRadius(20)
+            
     }
 }
 

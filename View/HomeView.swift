@@ -28,12 +28,13 @@ struct HomeView: View {
                                        EmptyView()
                                     }.listRowSeparator(.hidden).opacity(0)
                                     ItemCell(title: item.title, thumnail: item.thumbnail, date: item.pubDate)
+                                        
                                 }
                             }
                         }
                     }
                 
-                .navigationTitle("Events")
+                .navigationTitle("Home")
                 .listStyle(GroupedListStyle())
                 
             case .notAvailable:
