@@ -56,13 +56,13 @@ struct CategorySliderView: View {
         NavigationView {
             VStack(spacing: 10) {
                 
-                Tabs(tabs: .constant(["All", "Art", "Concert", "Movie", "Plays","Charity","Open Mic","Festival","Lectures","Fashion","Parties","Classes","Out of Town"]), selection: $selectedTab, underlineColor: .black) { title, isSelected in
+                Tabs(tabs: .constant(["All", "Art", "Concert", "Movie", "Plays", "Charity", "Festival", "Classes","Lectures", "Fashion", "Parties", "Open Mic", "Out of Town"]), selection: $selectedTab, underlineColor: .black) { title, isSelected in
                            
                     Text(title)
                         .borderedCaption()
                         .foregroundColor(isSelected ? .black : .gray)
                 }
-                Spacer()
+                
                 
                 switch(selectedTab) {
                     case 0: HomeView()
@@ -71,17 +71,19 @@ struct CategorySliderView: View {
                     case 3: MovieView()
                     case 4: PlaysView()
                     case 5: CharityView()
-                    case 6: OpenMicView()
-                    case 7: FestivalView()
+                    case 6: FestivalView()
+                    case 7: ClassesView()
                     case 8: LecturesView()
                     case 9: FashionView()
                     case 10: PartiesView()
-                    case 11: ClassesView()
+                    case 11: OpenMicView()
                     case 12: OutofTownView()
 
                 default:
                     HomeView()
                 }
+                
+                Spacer()
             }
             .navigationTitle("Events")
         }
