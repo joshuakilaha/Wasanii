@@ -18,39 +18,38 @@ struct ItemDescriptionView: View {
     
     var body: some View {
         
-        NavigationView {
-            
-            VStack {
-                VStack {
-                    
+        GeometryReader { geo in
+
+            ScrollView {
                     AsyncImage(url: URL(string: thumbnail)) { phase in
                             if let image = phase.image {
                                 // Displays the loaded image.
-                                image.ignoresSafeArea(edges: .top).frame(height: 50)
+                                image.resizable()
+                                    .scaledToFill()
+                                    .frame(width: geo.size.width * 1.0, height: geo.size.height * 0.7)
+                                    .background(Color.black)
+                                    .opacity(0.9)
 
                             } else {
                                 // Acts as a placeholder.
                                 Image("defaultImage")
-                                    .ignoresSafeArea(edges: .top)
-                                    .frame(height: 50)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: geo.size.width * 1.0, height: geo.size.height * 0.5)
+                                    .background(Color.black)
+                                    .opacity(0.9)
                             }
-                    
-                    } .padding(.bottom, 200.0)
-                }
-
-                
-                ScrollView {
-
+                    }
                     VStack(alignment: .leading) {
                         Text(title)
                             .font(.title)
                             .bold()
-                            .padding(.trailing, 180)
+                            .padding(.bottom, 5)
 
                         Text(Date().formatStringDate(date: date))
                             .foregroundColor(.gray)
                             .italic()
-                    
+
                     } .padding()
 
                     Divider()
@@ -59,18 +58,17 @@ struct ItemDescriptionView: View {
 
                     VStack(alignment: .leading) {
                         Text("Event Details")
-                            .font(.title2)
+                            .font(.title)
+                            .bold()
+                            .padding(.bottom, 10.0)
 
                         Text(description)
                     } .padding()
-                }
-                
+
                 Spacer()
-                
-            }
-            
-        }
-        .onAppear {
+
+            } .ignoresSafeArea()
+        } .onAppear {
             thumbnail = item.thumbnail
             title = item.title
             date = item.pubDate
@@ -79,21 +77,12 @@ struct ItemDescriptionView: View {
     }
 }
 
-//struct ItemDescriptionView_Previews: PreviewProvider {
-//    static var previews: some View {
-////        ItemDescriptionView(title: "Arts and Culture", date: "2020-10-21 18:42:56", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo", thumbnail: "defaultImage")
-//    }
-//}
 
 /**
- HStack {
-     Image(systemName: "heart.circle.fill")
-         .foregroundColor(Color.red)
-     Image(systemName: "calendar")
-         .foregroundColor(Color.red)
-         //.frame(height: 200)
-     Image(systemName: "arrowshape.turn.up.right.fill")
-         .foregroundColor(Color.red)
- }
- 
+struct ItemDescriptionView_Previews: PreviewProvider {
+    static var previews: some View {
+        ItemDescriptionView(item: Item.dummyData.first!)
+    }
+}
+
  */

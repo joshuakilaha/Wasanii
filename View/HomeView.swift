@@ -11,23 +11,25 @@ struct HomeView: View {
     
     @StateObject var itemViewModel = ItemViewModel(service: ItemService())
     
+    
     var body: some View {
         
         NavigationView {
                 switch itemViewModel.state {
                 
             case .success(let data) :
-                VStack {
+                    VStack(spacing: 10) {
                     
                     List {
                         ForEach(data, id: \.guid) { item in
-                            NavigationLink(destination: ItemDescriptionView(item: item)) {
+                            ZStack {
+                                NavigationLink(destination: ItemDescriptionView(item: item)) {
+                                   EmptyView()
+                                }.listRowSeparator(.hidden).opacity(0)
                                 ItemCell(title: item.title, thumnail: item.thumbnail, date: item.pubDate)
                             }
-                           
                         }
                     }
-                    
                 }
                 
                 .navigationTitle("Events")
@@ -44,7 +46,6 @@ struct HomeView: View {
             }
             
         } .navigationViewStyle(.stack)
-            .background(Color.blue)
         .task {
            await itemViewModel.getItems()
         }

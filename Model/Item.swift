@@ -63,7 +63,7 @@ struct Enclosure: Codable {
      {
           "title": "Book Launch: Jackie Karuti’s Debut Monograph, “Notes Movement Method”, Apr. 27 2022 @ Circle Art Gallery",
  
-          "pubDate": "2022-04-27 07:19:var
+          "pubDate": "2022-04-27 07:19,var
  
           "link": "https://nairobinow.wordpress.com/2022/04/27/book-launch-jackie-karutis-debut-monograph-notes-movement-method-apr-27-2022-circle-art-gallery/",
  

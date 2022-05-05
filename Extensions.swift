@@ -26,3 +26,21 @@ extension Date {
 extension Color {
     static let newPrimaryColor = Color("colorPrimary")
 }
+
+
+struct itemModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 0)
+            .padding(.all, 10)
+            .cornerRadius(20)
+            .frame(maxWidth: .infinity, alignment: .center)
+            //.background(Color.newPrimaryColor.opacity(0.1))
+    }
+}
+
+extension View {
+    func ItemList() -> some View {
+        modifier(itemModifier())
+    }
+}

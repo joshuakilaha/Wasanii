@@ -17,42 +17,43 @@ struct ItemCell: View {
     var body: some View {
 
         HStack {
-        AsyncImage(url: URL(string: thumnail)) { phase in
-                if let image = phase.image {
-                    // Displays the loaded image.
-                    image.resizable().frame(width: 150, height: 150)
-                        .cornerRadius(20)
-                        
+            AsyncImage(url: URL(string: thumnail)) { phase in
+            if let image = phase.image {
+                // Displays the loaded image.
+                image
+                    .resizable()
+                    .frame(width: 150, height: 150)
+                    .cornerRadius(20)
+                   // .frame(width: 150)
+                    
+//                        .resizable().frame(width: 150, height: 150)
+//                        .cornerRadius(20)
+                    
 //                } else if phase.error != nil {
 //                    Color.red // Indicates an error.
-                } else {
-                    // Acts as a placeholder.
-                    Image("defaultImage")
-                        .resizable()
-                        .frame(width: 150, height: 150)
-                        .cornerRadius(20)
-                }
-        } .padding()
-            
-            Spacer()
+            } else {
+                // Acts as a placeholder.
+                Image("defaultImage")
+                    .resizable()
+                    .cornerRadius(20)
+                    .frame(width: 150, height: 150)
+                    //.frame(width: 150)
+                    
+                   
+            }
+        }
+            //Spacer()
             VStack(alignment: .leading) {
                 
                 Text(title)
-                .bold()
-                .lineLimit(1)
-                .fixedSize(horizontal: false, vertical: true)
-                
-                //Spacer(minLength: 20)
-                
-                Text("Nairobi Cinema")
-                    .font(.title3)
-                    .foregroundColor(.gray)
-                
-                
+                .font(.system(size: 16, weight: .bold, design: .default))
+                .foregroundColor(.black)
+                .lineLimit(3)
                 
                 Text( Date().formatStringDate(date: date))
-                    .italic()
-                    .foregroundColor(.gray)
+                    .font(.system(size: 16, design: .default))
+                    .foregroundColor(.black)
+                    .padding(.top, 8)
             }
             
             VStack(alignment: .trailing) {
@@ -60,8 +61,8 @@ struct ItemCell: View {
                     .frame(width: 40, height: 40)
                     .foregroundColor(.gray)
             }
-        }
-//        .background(Color.newPrimaryColor.opacity(0.1))
+        }.ItemList()
+
     }
 }
 
@@ -71,3 +72,4 @@ struct ItemCell_Previews: PreviewProvider {
         
     }
 }
+
