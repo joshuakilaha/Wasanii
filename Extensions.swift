@@ -9,12 +9,7 @@ import Foundation
 import SwiftUI
 
 
-extension  String {
-    func trimmed() -> String {
-        self.trimmingCharacters(in: .whitespacesAndNewlines)
-    }
-}
-
+//MARK: -Date Converter
 extension Date {
     func formatStringDate(date: String) -> String {
         let dateFormatter = DateFormatter()
@@ -25,11 +20,13 @@ extension Date {
     }
 }
 
+//MARK: -Color
 extension Color {
     static let newPrimaryColor = Color("colorPrimary")
 }
 
 
+//MARK: -Item Card View
 struct itemModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -40,7 +37,6 @@ struct itemModifier: ViewModifier {
             //.background(Color.newPrimaryColor.opacity(0.1))
     }
 }
-
 extension View {
     func ItemList() -> some View {
         modifier(itemModifier())
@@ -48,6 +44,7 @@ extension View {
 }
 
 
+//MARK: -TabView Controller
 struct Tabs<Label: View>: View {
   @Binding var tabs: [String] // The tab titles
   @Binding var selection: Int // Currently selected tab
@@ -86,4 +83,12 @@ struct Tabs<Label: View>: View {
           .transition(.move(edge: .bottom)) ,alignment: .bottomLeading)
     }
   }
+}
+
+
+//trim text when searching
+extension  String {
+    func trimmed() -> String {
+        self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
 }

@@ -17,8 +17,6 @@ struct ArtView: View {
                 
             case .success(let data) :
                     VStack {
-                     //   CategorySliderView().padding()
-                    
                         List {
                             ForEach(data, id: \.guid) { item in
                                 ZStack {

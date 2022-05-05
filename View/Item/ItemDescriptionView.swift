@@ -21,6 +21,7 @@ struct ItemDescriptionView: View {
         GeometryReader { geo in
 
             ScrollView {
+                //MARK: -Image Loader
                     AsyncImage(url: URL(string: thumbnail)) { phase in
                             if let image = phase.image {
                                 // Displays the loaded image.
@@ -41,11 +42,14 @@ struct ItemDescriptionView: View {
                             }
                     }
                     VStack(alignment: .leading) {
+                        
+                        //MARK: -Title
                         Text(title)
                             .font(.title)
                             .bold()
                             .padding(.bottom, 5)
 
+                        //MARK: -Date
                         Text(Date().formatStringDate(date: date))
                             .foregroundColor(.gray)
                             .italic()
@@ -62,6 +66,7 @@ struct ItemDescriptionView: View {
                             .bold()
                             .padding(.bottom, 10.0)
 
+                        //MARK: -Description
                         Text(description)
                     } .padding()
 

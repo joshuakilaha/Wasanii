@@ -12,6 +12,7 @@ enum APIConstants {
     static let nairobiNow = "https://nairobinow.wordpress.com/feed/"
     static let key = "eb0w267akvfdrgpwrcppbiepe8exqejorib67ssr"
     
+    //Category Links
     static let concertCategory = "https://nairobinow.wordpress.com/category/concerts/feed/"
     static let artCategory = "https://nairobinow.wordpress.com/category/art-exhibits/feed/"
     static let movieCategory = "https://nairobinow.wordpress.com/category/movies/feed/"

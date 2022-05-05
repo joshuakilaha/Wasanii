@@ -7,64 +7,25 @@
 
 import SwiftUI
 
-//
-//struct CategorySliderView: View {
-//
-//    @State private var selectedTab: Int = 0
-//
-//    var body: some View {
-//        VStack {
-//            Picker("", selection: $selectedTab) {
-//                Text("ALL")
-//                    .tag(0)
-//                Text("Art").tag(1)
-//                Text("Concerts").tag(2)
-//            }
-//            //.borderedCaption()
-//            .pickerStyle(SegmentedPickerStyle())
-//
-//            switch(selectedTab) {
-//                case 0: SearchView()
-//                case 1: AlertView()
-//                case 2: ProfileView()
-//
-//            default:
-//                EmptyView()
-//            }
-//        }
-//    }
-//}
-
-
-
 struct CategorySliderView: View {
-
-    enum Category {
-       // case all
-        case art
-        case movie
-    }
     
-    @State private var showView = false //View Presentation to AddView
-    @State private var selectedTab: Int = 0
+    @State private var selectedCategory: Int = 0
     
-    @State var category: Category = .art
-    
-
 
     var body: some View {
         NavigationView {
             VStack(spacing: 10) {
                 
-                Tabs(tabs: .constant(["All", "Art", "Concert", "Movie", "Plays", "Charity", "Festival", "Classes","Lectures", "Fashion", "Parties", "Open Mic", "Out of Town"]), selection: $selectedTab, underlineColor: .black) { title, isSelected in
+                //MARK: -Top navigation slider
+                Tabs(tabs: .constant(["All", "Art", "Concert", "Movie", "Plays", "Charity", "Festival", "Classes","Lectures", "Fashion", "Parties", "Open Mic", "Out of Town"]), selection: $selectedCategory, underlineColor: .black) { title, isSelected in
                            
                     Text(title)
                         .borderedCaption()
                         .foregroundColor(isSelected ? .black : .gray)
                 }
                 
-                
-                switch(selectedTab) {
+                //MARK: -Category views
+                switch(selectedCategory) {
                     case 0: HomeView()
                     case 1: ArtView()
                     case 2: ConcertView()
@@ -87,62 +48,6 @@ struct CategorySliderView: View {
             }
             .navigationTitle("Events")
         }
-        
-        
-        
-//        switch category {
-//        case .art:
-//            ArtView()
-//        case .movie:
-//            ProfileView()
-//        }
-        
-        
-//        ScrollView(.horizontal, showsIndicators: false) {
-//
-//                HStack(alignment: .center) {
-//                    Button {
-//                        showView.toggle()
-//                    } label: {
-//                        Text("All")
-//                            .borderedCaption()
-//                    }
-//                    Button {
-//                        print("art-exhibits")
-//                    } label: {
-//                        Text("Art")
-//                            .borderedCaption()
-//                    }
-//                    Button {
-//                        print("concerts")
-//                    } label: {
-//                        Text("Concerts")
-//                            .borderedCaption()
-//                    }
-//                    Button {
-//                        print("movies")
-//                    } label: {
-//                        Text("Movies")
-//                            .borderedCaption()
-//                    }
-//                    Button {
-//                        print("theater-performances")
-//                    } label: {
-//                        Text("Theater")
-//                            .borderedCaption()
-//                    }
-//                    Button {
-//                        print("charity")
-//                    } label: {
-//                        Text("Charity")
-//                            .borderedCaption()
-//                    }
-//
-//                }
-//            }
-//        .sheet(isPresented: $showView) {
-//            ArtView()
-      //  }
     }
 }
 

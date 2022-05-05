@@ -9,13 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     
-    
-    
     var body: some View {
         
         TabView {
             //MARK: -Home Page        
-            //HomeView()
             CategorySliderView()
                .tabItem {
                    Image(systemName: "house.fill")
