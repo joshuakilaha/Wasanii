@@ -18,25 +18,28 @@ struct HomeView: View {
                 switch itemViewModel.state {
                 
             case .success(let data) :
-                    VStack(spacing: 10) {
+                    VStack {
+                        CategorySliderView().padding()
                     
-                    List {
-                        ForEach(data, id: \.guid) { item in
-                            ZStack {
-                                NavigationLink(destination: ItemDescriptionView(item: item)) {
-                                   EmptyView()
-                                }.listRowSeparator(.hidden).opacity(0)
-                                ItemCell(title: item.title, thumnail: item.thumbnail, date: item.pubDate)
+                        List {
+                            ForEach(data, id: \.guid) { item in
+                                ZStack {
+                                    NavigationLink(destination: ItemDescriptionView(item: item)) {
+                                       EmptyView()
+                                    }.listRowSeparator(.hidden).opacity(0)
+                                    ItemCell(title: item.title, thumnail: item.thumbnail, date: item.pubDate)
+                                }
                             }
                         }
                     }
-                }
                 
                 .navigationTitle("Events")
                 .listStyle(GroupedListStyle())
                 
             case .notAvailable:
-                EmptyView()
+                    VStack {
+                        EmptyView().background(Color.black)
+                    }
                 
             case .loading:
                 ProgressView()
