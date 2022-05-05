@@ -34,13 +34,13 @@ class ItemViewModel: ObservableObject {
         self.service = service
     }
     
-    func getItems() async {
+    func getItems(url: String) async {
         //start loading
         self.state = .loading
         self.hasError = false
         
         do {
-            let items = try await service.getRequests() //wait for response from fetchItems to continue
+            let items = try await service.getRequests(url: url) //wait for response from fetchItems to continue
             self.state = .success(data: items) //on success response get decoded info and place in items
         } catch {
             //if the service.fetchItems func throws and error or fails to execute
@@ -56,7 +56,7 @@ class ItemViewModel: ObservableObject {
         self.hasError = false
         
         do {
-            let itemCategory = try await service.getCategortyRequests(url1: url)
+            let itemCategory = try await service.getRequests(url: url)
             self.state = .success(data: itemCategory)
         } catch {
             self.state = .failed(error: error)

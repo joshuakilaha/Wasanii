@@ -15,21 +15,21 @@ struct ItemService {
         case invalidData
     }
     
+
+    //MARK: -Get ALL API
+    /**
+            @url: dynamic url string to be passed when checking for sessions
+     */
     //get api request
-    func getRequests() async throws -> [Item] {
+    func getRequests(url: String) async throws -> [Item] {
         
         //get url
-//        guard let url = URL(string: APIConstants.baseUrl.appending(APIConstants.nairobiNow).appending(APIConstants.key)) else {
-//            throw NetworkError.invalidUrl
-//        }
-        guard let url = URL(string: "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fnairobinow.wordpress.com%2Ffeed%2F&api_key=eb0w267akvfdrgpwrcppbiepe8exqejorib67ssr") else {
+        guard let url = URL(string: url) else {
             throw NetworkError.invalidUrl
         }
+
         
-        
-    //https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fnairobinow.wordpress.com%2Ffeed%2F&api_key=aiks2b9ma5dhqg8dcnsfanl275djzn8xxgllgaer
-        
-        //get        
+        //get URLSession
         let (data, response) = try await URLSession.shared.data(from: url)
         
         //get the status report from server
@@ -40,9 +40,10 @@ struct ItemService {
         
         //get the JSON data, decode and place the decoded info in the results
         let decoded = try JSONDecoder().decode(Wasanii.self, from: data)
-        //print(decoded)
+        print(decoded)
         return decoded.items
     }
+    
     
     //MARK: -Search Item
     func getItem(searchedItem: String) async throws -> [Item] {
@@ -87,33 +88,10 @@ struct ItemService {
         
     }
     
-    
-    
-    func getCategortyRequests(url1: String) async throws -> [Item] {
-        
-        //get url
-        guard let url = URL(string: url1) else {
-            throw NetworkError.invalidUrl
-        }
-
-        
-        
-    //https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fnairobinow.wordpress.com%2Ffeed%2F&api_key=aiks2b9ma5dhqg8dcnsfanl275djzn8xxgllgaer
-        
-        //get
-        let (data, response) = try await URLSession.shared.data(from: url)
-        
-        //get the status report from server
-        guard let response = response as? HTTPURLResponse,
-              response.statusCode == 200 else {
-            throw NetworkError.invalidResponse
-        }
-        
-        //get the JSON data, decode and place the decoded info in the results
-        let decoded = try JSONDecoder().decode(Wasanii.self, from: data)
-        print(decoded)
-        return decoded.items
-    }
-    
-    
 }
+
+
+
+/**
+ //https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fnairobinow.wordpress.com%2Ffeed%2F&api_key=aiks2b9ma5dhqg8dcnsfanl275djzn8xxgllgaer
+ */
