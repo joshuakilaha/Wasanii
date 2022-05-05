@@ -31,7 +31,9 @@ struct HomeView: View {
                                         
                                 }
                             }
-                        }
+                        }  .onAppear(perform: {
+                            UITableView.appearance().contentInset.top = -35
+                        })
                     }
                 
                 .navigationTitle("Home")

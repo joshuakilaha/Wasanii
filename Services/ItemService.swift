@@ -40,7 +40,7 @@ struct ItemService {
         
         //get the JSON data, decode and place the decoded info in the results
         let decoded = try JSONDecoder().decode(Wasanii.self, from: data)
-        print(decoded)
+        //print(decoded)
         return decoded.items
     }
     
