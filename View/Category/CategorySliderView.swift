@@ -9,18 +9,14 @@ import SwiftUI
 
 struct CategorySliderView: View {
     
-    @StateObject var itemViewModel = ItemViewModel(service: ItemService())
+    @State private var showView = false //View Presentation to AddView
     
     var body: some View {
+        
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .center) {
                 Button {
-                    
-                    Task {
-                        await itemViewModel.getCategory(url:APIConstants.baseUrl.appending(APIConstants.artCategory))
-                    }
-                    
-                    print("art-exhibits")
+                    showView.toggle()
                 } label: {
                     Text("All")
                         .borderedCaption()
@@ -57,6 +53,9 @@ struct CategorySliderView: View {
                 }
 
             }
+        }
+        .sheet(isPresented: $showView) {
+            ArtView()
         }
     }
 }
