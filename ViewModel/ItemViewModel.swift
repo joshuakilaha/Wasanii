@@ -49,4 +49,19 @@ class ItemViewModel: ObservableObject {
             debugPrint(error)
         }
     }
+    
+    func getCategory(url: String) async {
+        
+        self.state = .loading
+        self.hasError = false
+        
+        do {
+            let itemCategory = try await service.getCategortyRequests(url1: url)
+            self.state = .success(data: itemCategory)
+        } catch {
+            self.state = .failed(error: error)
+            hasError = true
+            debugPrint(error)
+        }
+    }
 }

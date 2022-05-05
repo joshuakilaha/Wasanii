@@ -86,4 +86,34 @@ struct ItemService {
         return itemToSearch.items
         
     }
+    
+    
+    
+    func getCategortyRequests(url1: String) async throws -> [Item] {
+        
+        //get url
+        guard let url = URL(string: url1) else {
+            throw NetworkError.invalidUrl
+        }
+
+        
+        
+    //https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fnairobinow.wordpress.com%2Ffeed%2F&api_key=aiks2b9ma5dhqg8dcnsfanl275djzn8xxgllgaer
+        
+        //get
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        //get the status report from server
+        guard let response = response as? HTTPURLResponse,
+              response.statusCode == 200 else {
+            throw NetworkError.invalidResponse
+        }
+        
+        //get the JSON data, decode and place the decoded info in the results
+        let decoded = try JSONDecoder().decode(Wasanii.self, from: data)
+        print(decoded)
+        return decoded.items
+    }
+    
+    
 }

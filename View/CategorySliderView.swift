@@ -8,10 +8,18 @@
 import SwiftUI
 
 struct CategorySliderView: View {
+    
+    @StateObject var itemViewModel = ItemViewModel(service: ItemService())
+    
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .center) {
                 Button {
+                    
+                    Task {
+                        await itemViewModel.getCategory(url:APIConstants.baseUrl.appending(APIConstants.artCategory))
+                    }
+                    
                     print("art-exhibits")
                 } label: {
                     Text("All")
