@@ -1,24 +1,19 @@
 //
-//  HomeView.swift
+//  ClassesView.swift
 //  Wasanii
 //
-//  Created by mroot on 03/05/2022.
+//  Created by mroot on 05/05/2022.
 //
 
 import SwiftUI
 
-struct HomeView: View {
-    
+struct ClassesView: View {
     @StateObject var itemViewModel = ItemViewModel(service: ItemService())
-    
-    //@State private var selectedTab = 0
-    
     var body: some View {
-        
         VStack {
                 switch itemViewModel.state {
                 
-            case .success(let data) :
+            case .success(let data):
                     VStack {
                         List {
                             ForEach(data, id: \.guid) { item in
@@ -27,7 +22,7 @@ struct HomeView: View {
                                        EmptyView()
                                     }.listRowSeparator(.hidden).opacity(0)
                                     ItemCell(title: item.title, thumnail: item.thumbnail, date: item.pubDate)
-
+                                        
                                 }
                             }
                         }
@@ -35,8 +30,6 @@ struct HomeView: View {
                             UITableView.appearance().contentInset.top = -35
                         })
                     }
-                
-                //.navigationTitle("Home")
                 .listStyle(GroupedListStyle())
                 
             case .notAvailable:
@@ -51,16 +44,16 @@ struct HomeView: View {
                 Text(error.localizedDescription)
             }
             
-        } .navigationViewStyle(.stack)
-        .task {
-            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.nairobiNow))
         }
-    
+        .navigationViewStyle(.stack)
+        .task {
+            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.classesCategory))
+        }
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
+struct ClassesView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        ClassesView()
     }
 }

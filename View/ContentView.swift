@@ -15,7 +15,8 @@ struct ContentView: View {
         
         TabView {
             //MARK: -Home Page        
-            HomeView()
+            //HomeView()
+            CategorySliderView()
                .tabItem {
                    Image(systemName: "house.fill")
                    Text("Home")

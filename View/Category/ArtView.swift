@@ -12,12 +12,12 @@ struct ArtView: View {
     @StateObject var itemViewModel = ItemViewModel(service: ItemService())
     
     var body: some View {
-        NavigationView {
+        VStack {
                 switch itemViewModel.state {
                 
             case .success(let data) :
                     VStack {
-                        CategorySliderView().padding()
+                     //   CategorySliderView().padding()
                     
                         List {
                             ForEach(data, id: \.guid) { item in
@@ -29,12 +29,13 @@ struct ArtView: View {
                                         
                                 }
                             }
-                        }   .onAppear(perform: {
+                        }
+                        .onAppear(perform: {
                             UITableView.appearance().contentInset.top = -35
                         })
                     }
                 
-                .navigationTitle("Art")
+                //.navigationTitle("Art")
                 .listStyle(GroupedListStyle())
                 
             case .notAvailable:
@@ -49,7 +50,8 @@ struct ArtView: View {
                 Text(error.localizedDescription)
             }
             
-        } .navigationViewStyle(.stack)
+        }
+        .navigationViewStyle(.stack)
         .task {
             await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.artCategory))
         }
