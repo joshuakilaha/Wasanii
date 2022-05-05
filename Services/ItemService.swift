@@ -45,6 +45,7 @@ struct ItemService {
     }
     
     
+    
     //MARK: -Search Item
     func getItem(searchedItem: String) async throws -> [Item] {
         
@@ -61,9 +62,9 @@ struct ItemService {
         components.host = "api.rss2json.com"
         components.path = "/v1/api.json"
         components.queryItems = [
-            URLQueryItem(name: "rss_url", value: "https://nairobinow.wordpress.com/search/\(searchedItem.trimmed())/feed/rss2/"),
-      //  URLQueryItem(name: "s", value: searchedItem),
-       // URLQueryItem(name: "searchbutton", value: "Go%21")
+        URLQueryItem(name: "rss_url", value: "https://nairobinow.wordpress.com/search/\(searchedItem)/feed/rss2/"),
+        //URLQueryItem(name: "s", value: searchedItem),
+        URLQueryItem(name: "apikey", value: "aiks2b9ma5dhqg8dcnsfanl275djzn8xxgllgaer")
         ]
         
         
@@ -84,6 +85,7 @@ struct ItemService {
         
         //get the JSON data, decode and place the decoded info in the results
         let itemToSearch = try JSONDecoder().decode(Wasanii.self, from: data)
+        print(itemToSearch)
         return itemToSearch.items
         
     }
