@@ -10,7 +10,10 @@ import Foundation
 enum APIConstants {
     static let baseUrl = "https://api.rss2json.com/v1/api.json?rss_url="
     static let nairobiNow = "https://nairobinow.wordpress.com/feed/"
+    static let api_key = "&api_key=aiks2b9ma5dhqg8dcnsfanl275djzn8xxgllgaer"
+    
     static let key = "eb0w267akvfdrgpwrcppbiepe8exqejorib67ssr"
+    
     
     //Category Links
     static let concertCategory = "https://nairobinow.wordpress.com/category/concerts/feed/"

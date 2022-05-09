@@ -51,7 +51,7 @@ struct ArtView: View {
         }
         .navigationViewStyle(.stack)
         .task {
-            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.artCategory))
+            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.artCategory).appending(APIConstants.api_key))
         }
     }
 }
