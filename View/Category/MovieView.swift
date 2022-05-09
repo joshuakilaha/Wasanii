@@ -47,7 +47,7 @@ struct MovieView: View {
         }
         .navigationViewStyle(.stack)
         .task {
-            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.movieCategory))
+            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.movieCategory).appending(APIConstants.api_key))
         }
     }
 }
