@@ -14,14 +14,14 @@ struct CategorySliderView: View {
 
     var body: some View {
         NavigationView {
-            VStack(spacing: 10) {
+            VStack(spacing: 5) {
                 
                 //MARK: -Top navigation slider
                 Tabs(tabs: .constant(["All", "Art", "Concert", "Movie", "Plays", "Charity", "Festival", "Classes","Lectures", "Fashion", "Parties", "Open Mic", "Out of Town"]), selection: $selectedCategory, underlineColor: .black) { title, isSelected in
                            
                     Text(title)
-                        .foregroundColor(isSelected ? .white : .gray)
-                } .padding(.top, 10)
+                        .foregroundColor(isSelected ? .white : .black)
+                } .padding(.top, 30)
                 
                 Spacer()
                 
@@ -63,7 +63,7 @@ struct BorderedCaption: ViewModifier {
         content
             .font(.system(size: 13, weight: .bold, design: .default))
             .padding(10)
-            .frame(width: 80)
+            .frame(width: 100)
             .foregroundColor(.white)
             .background(Color.newPrimaryColor)
             .cornerRadius(20)

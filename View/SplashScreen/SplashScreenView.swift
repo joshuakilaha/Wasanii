@@ -23,7 +23,7 @@ struct SplashScreenView: View {
                         .font(.system(size: 100))
                     Text("Wasanii")
                         .font(Font.custom("Baskerville-Bold", size: 26))
-                        .foregroundColor(.black.opacity(0.80))
+                        //.foregroundColor(.black.opacity(0.80))
                 }
                 .scaleEffect(size)
                 .opacity(opacity)
