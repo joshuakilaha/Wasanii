@@ -47,7 +47,7 @@ struct PartiesView: View {
         }
         .navigationViewStyle(.stack)
         .task {
-            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.partiesCategory))
+            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.partiesCategory).appending(APIConstants.api_key))
         }
     }
 }
