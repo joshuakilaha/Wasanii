@@ -49,7 +49,7 @@ struct ConcertView: View {
         }
         .navigationViewStyle(.stack)
         .task {
-            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.concertCategory))
+            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.concertCategory).appending(APIConstants.api_key))
         }
     }
 }
