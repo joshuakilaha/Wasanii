@@ -47,7 +47,7 @@ struct OutofTownView: View {
         }
         .navigationViewStyle(.stack)
         .task {
-            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.outOfTownCategory))
+            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.outOfTownCategory).appending(APIConstants.api_key))
         }
     }
 }
