@@ -23,11 +23,25 @@ struct ItemService {
     //get api request
     func getRequests(url: String) async throws -> [Item] {
         
+        //URL Components
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "api.rss2json.com"
+        components.path = "/v1/api.json"
+        components.queryItems = [
+            URLQueryItem(name: "rss_url", value: APIConstants.nairobiNow),
+            URLQueryItem(name: "apikey", value: APIConstants.key)
+        ]
+        
         //get url
-        guard let url = URL(string: url) else {
+//        guard let url = URL(string: url) else {
+//            throw NetworkError.invalidUrl
+//        }
+
+        guard let url = components.url else {
             throw NetworkError.invalidUrl
         }
-
+        print(url)
         
         //get URLSession
         let (data, response) = try await URLSession.shared.data(from: url)
@@ -48,7 +62,6 @@ struct ItemService {
     
     //MARK: -Search Item
     func getItem(searchedItem: String) async throws -> [Item] {
-        
         
         /**
          static let baseUrl = "https://api.rss2json.com/v1/api.json?rss_url="
