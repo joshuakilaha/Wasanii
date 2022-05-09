@@ -47,7 +47,7 @@ struct LecturesView: View {
         }
         .navigationViewStyle(.stack)
         .task {
-            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.lecturesCategory))
+            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.lecturesCategory).appending(APIConstants.api_key))
         }
     }
 }
