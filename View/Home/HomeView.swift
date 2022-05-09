@@ -51,7 +51,7 @@ struct HomeView: View {
             
         } .navigationViewStyle(.stack)
         .task {
-            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.nairobiNow))
+            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.nairobiNow).appending(APIConstants.api_key))
         }
     
     }
