@@ -47,7 +47,7 @@ struct PlaysView: View {
         }
         .navigationViewStyle(.stack)
         .task {
-            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.theaterCategory))
+            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.theaterCategory).appending(APIConstants.api_key))
         }
     }
 }
