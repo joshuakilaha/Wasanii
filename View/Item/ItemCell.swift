@@ -40,14 +40,12 @@ struct ItemCell: View {
             //MARK: Title
             Text(title)
             .font(.system(size: 16, weight: .bold, design: .default))
-            .foregroundColor(.black)
             .lineLimit(3)
             
             //MARK: Date
             
             Text( Date().formatStringDate(date: date))
                 .font(.system(size: 16, design: .default))
-                .foregroundColor(.black)
                 .padding(.top, 8)
         }
         

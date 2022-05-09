@@ -30,7 +30,7 @@ extension Color {
 struct itemModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 0)
+            //.shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 0)
             .padding(.all, 10)
             .cornerRadius(20)
             .frame(maxWidth: .infinity, alignment: .center)

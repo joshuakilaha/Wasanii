@@ -27,10 +27,6 @@ struct ItemService {
         guard let url = URL(string: url) else {
             throw NetworkError.invalidUrl
         }
-
-//        guard let url = components.url else {
-//            throw NetworkError.invalidUrl
-//        }
         print(url)
         
         //get URLSession
