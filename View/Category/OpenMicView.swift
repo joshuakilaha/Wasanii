@@ -47,7 +47,7 @@ struct OpenMicView: View {
         }
         .navigationViewStyle(.stack)
         .task {
-            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.openMicCategory))
+            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.openMicCategory).appending(APIConstants.api_key))
         }
     }
 }
