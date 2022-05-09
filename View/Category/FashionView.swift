@@ -47,7 +47,7 @@ struct FashionView: View {
         }
         .navigationViewStyle(.stack)
         .task {
-            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.fashionCategory))
+            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.fashionCategory).appending(APIConstants.api_key))
         }
     }
 }
