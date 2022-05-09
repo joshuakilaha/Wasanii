@@ -20,9 +20,10 @@ struct CategorySliderView: View {
                 Tabs(tabs: .constant(["All", "Art", "Concert", "Movie", "Plays", "Charity", "Festival", "Classes","Lectures", "Fashion", "Parties", "Open Mic", "Out of Town"]), selection: $selectedCategory, underlineColor: .black) { title, isSelected in
                            
                     Text(title)
-                        .borderedCaption()
-                        .foregroundColor(isSelected ? .black : .gray)
-                }
+                        .foregroundColor(isSelected ? .white : .gray)
+                } .padding(.top, 10)
+                
+                Spacer()
                 
                 //MARK: -Category views
                 switch(selectedCategory) {

@@ -42,8 +42,8 @@ struct ItemCell: View {
             .font(.system(size: 16, weight: .bold, design: .default))
             .lineLimit(3)
             
-            //MARK: Date
             
+            //MARK: Date
             Text( Date().formatStringDate(date: date))
                 .font(.system(size: 16, design: .default))
                 .padding(.top, 8)

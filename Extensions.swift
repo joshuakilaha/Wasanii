@@ -74,13 +74,14 @@ struct Tabs<Label: View>: View {
       }
     }) {
       label(title, isSelected)
-        .overlay(Rectangle() // The line under the tab
-          .frame(height: 2)
-           // The underline is visible only for the currently selected tab
-          .foregroundColor(isSelected ? underlineColor : .clear)
-          .padding(.top, 2)
-          // Animates the tab selection
-          .transition(.move(edge: .bottom)) ,alignment: .bottomLeading)
+            .borderedCaption()
+//        .overlay(Rectangle() // The line under the tab
+//          .frame(height: 2)
+//           // The underline is visible only for the currently selected tab
+//            .foregroundColor(isSelected ? underlineColor : .clear)
+//          .padding(.top, 2)
+//          // Animates the tab selection
+//          .transition(.move(edge: .bottom)) ,alignment: .bottomLeading)
     }
   }
 }
