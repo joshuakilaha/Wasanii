@@ -47,7 +47,7 @@ struct FestivalView: View {
         }
         .navigationViewStyle(.stack)
         .task {
-            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.festivalCategory))
+            await itemViewModel.getItems(url: APIConstants.baseUrl.appending(APIConstants.festivalCategory).appending(APIConstants.api_key))
         }
     }
 }
