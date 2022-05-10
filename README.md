@@ -10,7 +10,6 @@ A space where various activities and events taking place in and around Nairobi a
  
  ## Home Screen
  <p float="left">
- <img src ="https://user-images.githubusercontent.com/33428918/167680129-3fa5daa2-41aa-40c3-8f4b-c7e455f77213.PNG" width="250" height="450" />
  <img src ="https://user-images.githubusercontent.com/33428918/167680182-ee1de80f-548e-4ea9-9556-bb09151411f0.PNG" width="250" height="450" />
  <img src ="https://user-images.githubusercontent.com/33428918/167680219-dceb4fd8-7d69-41fc-be11-5d73a825b594.PNG" width="250" height="450" />
  </p>
