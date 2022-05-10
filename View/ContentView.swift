@@ -28,19 +28,19 @@ struct ContentView: View {
                                 Text("Search")
                             }
                         
-                        //MARK: -Alert
-                        AlertView()
-                            .tabItem {
-                                Image(systemName: "bell")
-                                Text("Alert")
-                            }
-                        
-                        //MARK: -Profile
-                        ProfileView()
-                            .tabItem {
-                                Image(systemName: "person")
-                                Text("Profile")
-                            }
+//                        //MARK: -Alert
+//                        AlertView()
+//                            .tabItem {
+//                                Image(systemName: "bell")
+//                                Text("Alert")
+//                            }
+//
+//                        //MARK: -Profile
+//                        ProfileView()
+//                            .tabItem {
+//                                Image(systemName: "person")
+//                                Text("Profile")
+//                            }
                         } .accentColor(.newPrimaryColor)
                 
                 if networkManager.isNotConnected {
