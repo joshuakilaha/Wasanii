@@ -19,7 +19,7 @@ class NetworkViewModel: ObservableObject {
     }
     
     var conncetionDescription: String {
-        return "Not Connected"
+        return "No internet connection"
     }
     
     init() {

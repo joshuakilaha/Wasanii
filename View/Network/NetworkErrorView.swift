@@ -29,12 +29,13 @@ struct NetworkErrorView: View {
                            .font(.headline)
                            .foregroundColor(Color(.systemBlue))
                    }
-                   .frame(width: 80, height: 25)
+                   .frame(width: 80, height: 20)
                    .background(Color.white)
                    .clipShape(Capsule())
                    .padding()
 
                }
+                .frame(height: 30)
                .background(Color.red)
     }
 }
