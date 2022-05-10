@@ -9,37 +9,44 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @ObservedObject var networkManager = NetworkViewModel()
+    
     var body: some View {
-        
-        TabView {
-            //MARK: -Home Page        
-            CategorySliderView()
-               .tabItem {
-                   Image(systemName: "house.fill")
-                   Text("Home")
-               }
-            
-            //MARK: -Search
-            SearchView()
-                .tabItem {
-                    Image(systemName: "magnifyingglass")
-                    Text("Search")
+            VStack {
+                    TabView {
+                        //MARK: -Home Page
+                        CategorySliderView()
+                           .tabItem {
+                               Image(systemName: "house.fill")
+                               Text("Home")
+                           }
+                        
+                        //MARK: -Search
+                        SearchView()
+                            .tabItem {
+                                Image(systemName: "magnifyingglass")
+                                Text("Search")
+                            }
+                        
+                        //MARK: -Alert
+                        AlertView()
+                            .tabItem {
+                                Image(systemName: "bell")
+                                Text("Alert")
+                            }
+                        
+                        //MARK: -Profile
+                        ProfileView()
+                            .tabItem {
+                                Image(systemName: "person")
+                                Text("Profile")
+                            }
+                        } .accentColor(.newPrimaryColor)
+                
+                if networkManager.isNotConnected {
+                    NetworkErrorView(netStatus: networkManager.conncetionDescription, image: networkManager.imageName)
                 }
-            
-            //MARK: -Alert
-            AlertView()
-                .tabItem {
-                    Image(systemName: "bell")
-                    Text("Alert")
-                }
-            
-            //MARK: -Profile
-            ProfileView()
-                .tabItem {
-                    Image(systemName: "person")
-                    Text("Profile")
-                }
-        } .accentColor(.newPrimaryColor)
+            }
     }
 }
 

@@ -1,0 +1,34 @@
+//
+//  NetworkViewModel.swift
+//  Wasanii
+//
+//  Created by mroot on 10/05/2022.
+//
+
+import Foundation
+import Network
+
+class NetworkViewModel: ObservableObject {
+    let monitor = NWPathMonitor()
+    let queue = DispatchQueue(label: "NetworkViewModel")
+    @Published var isNotConnected = true
+    
+    
+    var imageName: String {
+        return isNotConnected ? "wifi" : "wifi.slash"
+    }
+    
+    var conncetionDescription: String {
+        return "Not Connected"
+    }
+    
+    init() {
+        monitor.pathUpdateHandler = { path in
+            DispatchQueue.main.async {
+                self.isNotConnected = path.status == .unsatisfied
+            }
+        }
+        monitor.start(queue: queue)
+    }
+    
+}
