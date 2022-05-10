@@ -24,14 +24,14 @@ struct ItemCell: View {
                 // Displays the loaded image.
                 image
                     .resizable()
-                    .frame(width: 150, height: 150)
+                    .frame(width: 120, height: 120)
                     .cornerRadius(20)
             } else {
                 // Acts as a placeholder.
                 Image("defaultImage")
                     .resizable()
                     .cornerRadius(20)
-                    .frame(width: 150, height: 150)
+                    .frame(width: 120, height: 120)
             }
         }
             
